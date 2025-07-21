@@ -1,0 +1,16 @@
+DeepNN(DNN)
+사실은 행렬계산인데 그림을 신경망처럼 표현
+
+MLP(Multi Layer Perception)
+모든 노드들이 빠짐없이 완전히 다 연결
+activation 다른 거 써도 대충 넘어가는 듯
+
+perception
+activation(활성화 함수)을 USF(Unit Step Function)를 쓴 거
+
+USF
+    음수 : 0
+    양수 : 1
+Linear Activation
+    들어온 값 그대로
+

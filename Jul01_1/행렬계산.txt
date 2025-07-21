@@ -1,0 +1,43 @@
+행렬계산
+최적의 a/b를 찾자(Weight, bias)
+어떻게 찾냐
+1) 쌩랜덤노가다
+2) GD
+    L = e1 + e2 + e3 + e4 + e5 + ... + e1000000000
+    모든 데이터를 다 고려 -> 너무 느림
+    local minimum 문제
+3) SGD(Stochastic GD)
+    랜덤하게 하나만 빼서 L 계산
+    -> 나머지 중에 랜덤하게 하나만 빼서...
+    -> 나머지 중에... (비복원추출)
+    -> 빨라짐
+    -> 의외성 생겨서 local minimum에서 탈출 가능
+4) mini-batch SGD
+    SGD는 하나만 보고 하니까 의외성이 너무 심함
+    -> 파닥
+    여러개씩 보자
+        마침 GPU가 병렬연산이 강하니
+5) momentum
+    GD : 다음방향은 기존거 직교
+    momentum : 다음을 정할 때 전턴의 값을 일부 반영 -> 직교가 아닌 방향으로 -> 좀 더 정답을 향해
+6) RMSProp(RootMeanSquare Prop)
+    x로 10, y로 2 갔음 -> x는 많이 고려, y는 적게 고려
+    각 크기(실제로는 누적된 값)로 나눠서 -> x/y 평준화
+    10/10, 2/2 -> 1, 1로
+    x가 주로 고려되었을텐데, y도 그 정도로 고려해주면 의외성이 생길걸
+7) Adam(Adaptive Moment Estimation)
+    momentum + RMSProp
+    다음을 정할 때
+        전턴값 반영해서 직교방향 아니고 좀 더 정답방향으로
+        축별 평준화시켜서 고려해서
+
+batch-size : 한번에 몇개씩 보나
+epoch : 전체 데이터를 한 번 다 훑는 거를 몇 세트 하나
+learning-rate : 한번에 얼만큼씩 갈건가
+    크게 -> 속도 증가 -> 무한루프 돌면서 값 못 찾을 수도
+    작게 -> 속도 감소 -> 값은 찾겠는데
+
+parameter : AI가 찾아내는 변수
+    Weight, bias
+hyperparameter : 사람이 지정해주는 변수
+    batch-size, epoch, learning-rate, 인공신경망 구조
